@@ -33,6 +33,7 @@ ibus_req = '>= 1.5.19'
 gnome_desktop_req = '>= 40'
 pipewire_req = '>= 0.3.49'
 pango_req = '>= 1.46.0'
+qrencode_req = '>= 4.1.1'
 
 nm_req = '>= 1.10.4'
 secret_req = '>= 0.18'
@@ -89,6 +90,7 @@ ibus_dep = dependency('ibus-1.0', version: ibus_req)
 schemas_dep = dependency('gsettings-desktop-schemas', version: schemas_req)
 gnome_desktop_dep = dependency('gnome-desktop-4', version: gnome_desktop_req)
 pango_dep = dependency('pango', version: pango_req)
+qrencode_dep = dependency('libqrencode', version: qrencode_req)
 
 have_x11 = mutter_dep.get_variable('have_x11') == 'true'
 have_x11_client = mutter_dep.get_variable('have_x11_client') == 'true'

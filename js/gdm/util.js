@@ -915,6 +915,8 @@ export class ShellUserVerifier extends Signals.EventEmitter {
     }
 
     _onChoiceListQuery(client, serviceName, promptMessage, list) {
+        this.emit(`service-request::${serviceName}`);
+
         if (!this.serviceIsForeground(serviceName))
             return;
 
@@ -1046,6 +1048,8 @@ export class ShellUserVerifier extends Signals.EventEmitter {
     }
 
     _onInfo(client, serviceName, info) {
+        this.emit(`service-request::${serviceName}`);
+
         if (this.serviceIsForeground(serviceName)) {
             this._queueMessage(serviceName, info, MessageType.INFO);
         } else if (this.serviceIsFingerprint(serviceName)) {
@@ -1067,6 +1071,8 @@ export class ShellUserVerifier extends Signals.EventEmitter {
     }
 
     _onProblem(client, serviceName, problem) {
+        this.emit(`service-request::${serviceName}`);
+
         const isFingerprint = this.serviceIsFingerprint(serviceName);
 
         if (!this.serviceIsForeground(serviceName) && !isFingerprint)
@@ -1103,6 +1109,8 @@ export class ShellUserVerifier extends Signals.EventEmitter {
     }
 
     _onInfoQuery(client, serviceName, question) {
+        this.emit(`service-request::${serviceName}`);
+
         if (!this.serviceIsForeground(serviceName))
             return;
 
@@ -1110,6 +1118,8 @@ export class ShellUserVerifier extends Signals.EventEmitter {
     }
 
     _onSecretInfoQuery(client, serviceName, secretQuestion) {
+        this.emit(`service-request::${serviceName}`);
+
         if (!this.serviceIsForeground(serviceName))
             return;
 
